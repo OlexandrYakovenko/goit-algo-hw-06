@@ -28,6 +28,8 @@ class Field:
 class Name(Field):
     # реалізація класу
     def __init__(self, value):
+        if value=="":
+            raise Exception("The field Name is mandatory!")
         super().__init__(value)
 
 @input_error
@@ -43,8 +45,10 @@ class Record:
     #Реалізовано зберігання об'єкта Name в окремому атрибуті.
     #Реалізовано зберігання списку об'єктів Phone в окремому атрибуті (phones).
     def __init__(self, name):
-        self.name = Name(name)
-        self.phones = []
+         if name=="":
+             raise Exception("The field Name is mandatory!")
+         self.name = Name(name)
+         self.phones = []
 
     # реалізація класу
 
@@ -129,6 +133,12 @@ def main():
     n1=Name('n1: fdsfsdfsd')
     print(n1)
     print()
+    
+    # john_record1 = Record("")
+    # john_record1.add_phone("1234567890")
+    # john_record1.add_phone("5555555555")
+    # print(john_record1)
+    # return
     
     # Створення запису для John
     john_record = Record("John")
